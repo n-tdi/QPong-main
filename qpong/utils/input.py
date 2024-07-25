@@ -164,54 +164,63 @@ class Input:
 
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
+                    #close game with esc
                     self.running = False
                 elif event.key == pygame.K_a:
+                    #move selector left
                     circuit_grid.move_to_adjacent_node(MOVE_LEFT)
                     circuit_grid.draw(screen)
                     pygame.display.flip()
                 elif event.key == pygame.K_d:
+                    #move selector right
                     circuit_grid.move_to_adjacent_node(MOVE_RIGHT)
                     circuit_grid.draw(screen)
                     pygame.display.flip()
                 elif event.key == pygame.K_w:
+                    #move selector up
                     circuit_grid.move_to_adjacent_node(MOVE_UP)
                     circuit_grid.draw(screen)
                     pygame.display.flip()
                 elif event.key == pygame.K_s:
+                    #move selector down
                     circuit_grid.move_to_adjacent_node(MOVE_DOWN)
                     circuit_grid.draw(screen)
                     pygame.display.flip()
                 elif event.key == pygame.K_x:
+                    #place x gate
                     circuit_grid.handle_input_x()
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
                 elif event.key == pygame.K_y:
+                    #place y gate
                     circuit_grid.handle_input_y()
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
                 elif event.key == pygame.K_z:
+                    #place z gate
                     circuit_grid.handle_input_z()
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
                 elif event.key == pygame.K_h:
+                    #place hadamard gate
                     circuit_grid.handle_input_h()
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
                 elif event.key == pygame.K_SPACE:
+                    #remove gate
                     circuit_grid.handle_input_delete()
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
                 elif event.key == pygame.K_c:
-                    # Add or remove a control
+                    # Add or remove a control gate
                     circuit_grid.handle_input_ctrl()
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
-                    pygame.display.flip()
                 elif event.key == pygame.K_UP:
                     # Move a control qubit up
                     circuit_grid.handle_input_move_ctrl(MOVE_UP)
@@ -225,13 +234,13 @@ class Input:
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
                 elif event.key == pygame.K_LEFT:
-                    # Rotate a gate
+                    # Rotate a gate left
                     circuit_grid.handle_input_rotate(-np.pi / 8)
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
                 elif event.key == pygame.K_RIGHT:
-                    # Rotate a gate
+                    # Rotate a gate right
                     circuit_grid.handle_input_rotate(np.pi / 8)
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
