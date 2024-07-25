@@ -212,18 +212,18 @@ class Input:
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
-                elif event.key == pygame.K_UP:
-                    # Move a control qubit up
-                    circuit_grid.handle_input_move_ctrl(MOVE_UP)
-                    circuit_grid.draw(screen)
-                    self.update_paddle(level, screen, scene)
-                    pygame.display.flip()
-                elif event.key == pygame.K_DOWN:
-                    # Move a control qubit down
-                    circuit_grid.handle_input_move_ctrl(MOVE_DOWN)
-                    circuit_grid.draw(screen)
-                    self.update_paddle(level, screen, scene)
-                    pygame.display.flip()
+                # elif event.key == pygame.K_UP:
+                #     # Move a control qubit up
+                #     circuit_grid.handle_input_move_ctrl(MOVE_UP)
+                #     circuit_grid.draw(screen)
+                #     self.update_paddle(level, screen, scene)
+                #     pygame.display.flip()
+                # elif event.key == pygame.K_DOWN:
+                #     # Move a control qubit down
+                #     circuit_grid.handle_input_move_ctrl(MOVE_DOWN)
+                #     circuit_grid.draw(screen)
+                #     self.update_paddle(level, screen, scene)
+                #     pygame.display.flip()
                 elif event.key == pygame.K_LEFT:
                     # Rotate a gate
                     circuit_grid.handle_input_rotate(-np.pi / 8)

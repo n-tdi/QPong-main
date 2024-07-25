@@ -236,7 +236,6 @@ class CircuitGrid(pygame.sprite.RenderPlain):
             node_types.X,
             node_types.Y,
             node_types.Z,
-            node_types.H,
         ):
             circuit_grid_node = self.circuit_grid_model.get_node(
                 self.selected_wire, self.selected_column
@@ -295,7 +294,6 @@ class CircuitGrid(pygame.sprite.RenderPlain):
             node_types.X,
             node_types.Y,
             node_types.Z,
-            node_types.H,
         ):
             circuit_grid_node = self.circuit_grid_model.get_node(
                 self.selected_wire, self.selected_column
@@ -334,6 +332,7 @@ class CircuitGrid(pygame.sprite.RenderPlain):
                                     self.selected_column,
                                     CircuitGridNode(node_types.TRACE),
                                 )
+                                print("Im setting trace")
                         elif (
                             direction == MOVE_DOWN
                             and candidate_wire_num > self.selected_wire
@@ -342,13 +341,17 @@ class CircuitGrid(pygame.sprite.RenderPlain):
                                 self.circuit_grid_model.get_node_gate_part(
                                     candidate_wire_num - 1, self.selected_column
                                 )
-                                == node_types.EMPTY
+                                == node_types.EMPTY or self.circuit_grid_model.get_node_gate_part(
+                                    candidate_wire_num - 1, self.selected_column
+                                ) == node_types.TRACE
                             ):
                                 self.circuit_grid_model.set_node(
                                     candidate_wire_num - 1,
                                     self.selected_column,
                                     CircuitGridNode(node_types.TRACE),
                                 )
+                                print("Im setting trace")
+
                         self.update()
                     else:
                         print(
@@ -406,7 +409,7 @@ class CircuitGrid(pygame.sprite.RenderPlain):
             self.circuit_grid_model.set_node(
                 candidate_ctrl_wire_num,
                 self.selected_column,
-                CircuitGridNode(node_types.EMPTY),
+                CircuitGridNode(node_types.CTRL),
             )
             self.update()
             return candidate_ctrl_wire_num
@@ -571,19 +574,18 @@ class CircuitGridGate(pygame.sprite.Sprite):
         elif node.node_type == node_types.TDG:
             self.image, self.rect = load_image("gate_images/tdg_gate.png", -1)
         elif node.node_type == node_types.CTRL:
-            print("here")
             if self.wire_num > self.circuit_grid_model.get_gate_wire_for_control_node(
                 self.wire_num, self.column_num
             ):
                 self.image, self.rect = load_image(
                     "gate_images/ctrl_gate_bottom_wire.png", -1
                 )
-                print("I GOT HERE!!")
+                print("bottom")
             else:
                 self.image, self.rect = load_image(
                     "gate_images/ctrl_gate_top_wire.png", -1
                 )
-                print("I GOT HERE!!")
+                print("top")
         elif node.node_type == node_types.TRACE:
             self.image, self.rect = load_image("gate_images/trace_gate.png", -1)
         elif node.node_type == node_types.SWAP:
