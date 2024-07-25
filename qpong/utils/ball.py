@@ -53,7 +53,8 @@ class Ball(pygame.sprite.Sprite):
 
         # create a pygame Surface with ball size
         # self.image = pygame.Surface([self.height, self.width])
-        self.image, self.rect = load_image("player_images/Tilas-Kabengele.png", -1)
+        self.image, self.rect = load_image("player_images/pong ball.png", -1)
+        
 
         # self.image.fill(WHITE)
 
