@@ -192,12 +192,6 @@ class Input:
                     circuit_grid.draw(screen)
                     self.update_paddle(level, screen, scene)
                     pygame.display.flip()
-                elif event.key == pygame.K_y:
-                    #place y gate
-                    circuit_grid.handle_input_y()
-                    circuit_grid.draw(screen)
-                    self.update_paddle(level, screen, scene)
-                    pygame.display.flip()
                 elif event.key == pygame.K_z:
                     #place z gate
                     circuit_grid.handle_input_z()
